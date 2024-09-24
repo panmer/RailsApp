@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get "test_app/get"
-  get "test_app/post"
+  post "test_app/post"
   get "test_app/put"
   get "test_app/delete"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
