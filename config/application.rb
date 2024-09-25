@@ -6,16 +6,6 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-Rails.application.config.middleware.insert_before 0, Rack::Cors do
-  allow do
-    origins '*'
-
-    resource '*',
-      headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
-  end
-end
-
 module RailsApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -33,5 +23,15 @@ module RailsApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+    
+        resource '*',
+          headers: :any,
+          methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      end
+    end
+
   end
 end
